@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--1.配置环境，默认环境id为postsql-->
+    <environments default="postgresql">
+        <!--1.2 配置 id为postgresql的数据库环境-->
+        <environment id="postgresql">
+            <!--使用 JDBC 的事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://localhost:5432/BINGDB"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="123123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--配置 Mapper的位置-->
+    <mappers>
+        <mapper resource="ConMapper\memberMapper.xml"/>
+    </mappers>
+</configuration>

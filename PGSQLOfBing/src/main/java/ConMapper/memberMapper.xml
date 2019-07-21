@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mubatis.org/dtd/mybatis-3-mapper.dtd">
+<!--此文件是 MyBatis 的映射文件-->
+<!--namespace 表示命名空间-->
+<mapper namespace="ConMapper.MemberMapper">
+	<!-- 根据ID查询某一记录 -->
+    <select id="getMember" parameterType="Integer" resultType="ConObj.Member">
+        <!-- SELECT * FROM public.student 也是可行的-->
+        SELECT * FROM "public"."Gov_Manager" where "public"."Gov_Manager"."ID"=#{id}
+    </select>
+    <!-- 插入某一记录 -->
+    <insert id="insertMember" parameterType="ConObj.Member">
+    	INSERT INTO "public"."Gov_Manager" ("ID", "department", "ManageLevel") VALUES (#{id},#{department},#{ManageLevel});
+    </insert>
+    <!-- 删除某一记录 -->
+    <delete id="deleteMember" parameterType="Integer">
+    	delete from "public"."Gov_Manager" where "public"."Gov_Manager"."ID"= #{id}
+    </delete>
+    <!-- 查询数据表总共多少条记录 -->
+    <select id="getAllCount"  resultType="Integer">
+    	select count("public"."Gov_Manager"."ID") from "public"."Gov_Manager"
+    </select>
+    <!-- 更新数据语句 -->
+    <update id="updateDate" >
+    	UPDATE "public"."Gov_Manager" SET "department" = #{department},"ManageLevel"=#{ManageLevel} WHERE "public"."Gov_Manager"."ID"=#{id}
+    </update>
+</mapper>

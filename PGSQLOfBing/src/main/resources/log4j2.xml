@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!--name 为你的mybatis mapper接口package路径-->
+        *<logger name="mapper" level="DEBUG"/>*
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <!--name为dao mapper所在的包，level为TRACE-->
+        <Logger name="mapper" level="TRACE" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+    </Loggers>
+</Configuration>
